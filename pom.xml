@@ -91,7 +91,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.infinitops.musicaltickets/com.infinitops.musicaltickets.HelloApplication
+                            <mainClass>com.infinitops.musicaltickets/com.infinitops.musicaltickets.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
