@@ -6,8 +6,15 @@ public class Musical {
     private String title;
     private int runtime;
     private String category;
-    private String venue;
     private int minAge;
+
+    public Musical(int _id, String title, int runtime, String category, int minAge) {
+        this._id = _id;
+        this.title = title;
+        this.runtime = runtime;
+        this.category = category;
+        this.minAge = minAge;
+    }
 
     public int get_id() {
         return _id;
@@ -39,14 +46,6 @@ public class Musical {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getVenue() {
-        return venue;
-    }
-
-    public void setVenue(String venue) {
-        this.venue = venue;
     }
 
     public int getMinAge() {

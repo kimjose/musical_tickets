@@ -26,5 +26,10 @@
             </HBox.margin>
         </Button>
     </HBox>
-    <ListView id="myListView" prefHeight="200.0" prefWidth="200.0" />
+   <TableView id="myTableView" prefHeight="200.0" prefWidth="200.0">
+     <columns>
+       <TableColumn prefWidth="75.0" text="C1" />
+       <TableColumn prefWidth="75.0" text="C2" />
+     </columns>
+   </TableView>
 </VBox>

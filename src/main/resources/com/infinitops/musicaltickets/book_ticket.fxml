@@ -4,44 +4,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.BookTicket">
+<AnchorPane prefHeight="400.0" prefWidth="1198.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.BookTicket">
     <children>
-        <VBox prefHeight="400.0" prefWidth="928.0">
+        <VBox prefHeight="400.0" prefWidth="1198.0">
             <padding>
-                <Insets bottom="10.0" right="10.0" top="10.0"/>
+                <Insets bottom="10.0" right="10.0" top="10.0" />
             </padding>
             <children>
                 <HBox prefHeight="53.0" prefWidth="590.0">
                     <children>
-                        <ComboBox prefHeight="26.0" prefWidth="191.0" promptText="Musical Event"/>
-                        <ComboBox layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0"
-                                  promptText="Ticket Type">
+                        <ComboBox prefHeight="26.0" prefWidth="191.0" promptText="Musical Event" />
+                        <ComboBox layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Ticket Type">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </ComboBox>
-                        <ComboBox layoutX="221.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0"
-                                  promptText="Time Slot">
+                        <ComboBox layoutX="221.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Venue">
                             <HBox.margin>
-                                <Insets left="10.0"/>
+                                <Insets left="10.0" />
                             </HBox.margin>
                         </ComboBox>
-                        <TextField promptText="Number of tickets">
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </TextField>
+                  <ComboBox layoutX="422.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Time Slot">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox layoutX="623.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Seat Number">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
                         <Button mnemonicParsing="false" text="Book tickets">
                             <HBox.margin>
-                                <Insets left="15.0"/>
+                                <Insets left="15.0" />
                             </HBox.margin>
                         </Button>
                     </children>
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                 </HBox>
+            <TableView prefHeight="322.0" prefWidth="918.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
             </children>
         </VBox>
     </children>
