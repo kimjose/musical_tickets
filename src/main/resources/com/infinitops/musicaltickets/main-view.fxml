@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox id="vBoxPane" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.MainController">
+<VBox fx:id="vBoxPane" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -26,7 +26,7 @@
             </HBox.margin>
         </Button>
     </HBox>
-   <TableView id="myTableView" prefHeight="200.0" prefWidth="200.0">
+   <TableView fx:id="myTableView" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
      <columns>
        <TableColumn prefWidth="75.0" text="C1" />
        <TableColumn prefWidth="75.0" text="C2" />

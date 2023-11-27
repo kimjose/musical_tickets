@@ -8,5 +8,7 @@ module com.infinitops.musicaltickets {
     requires org.kordamp.bootstrapfx.core;
 
     opens com.infinitops.musicaltickets to javafx.fxml;
+    opens com.infinitops.musicaltickets.model to javafx.fxml;
     exports com.infinitops.musicaltickets;
+    exports com.infinitops.musicaltickets.model;
 }
