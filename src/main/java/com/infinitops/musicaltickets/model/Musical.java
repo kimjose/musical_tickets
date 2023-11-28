@@ -55,4 +55,9 @@ public class Musical {
     public void setMinAge(int minAge) {
         this.minAge = minAge;
     }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

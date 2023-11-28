@@ -34,6 +34,6 @@ public class Venue {
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.name;
     }
 }

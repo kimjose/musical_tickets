@@ -5,14 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="1198.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.BookTicket">
+<AnchorPane prefHeight="400.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.BookTicket">
     <children>
-      <VBox prefHeight="139.0" prefWidth="1172.0">
+      <VBox prefHeight="139.0" prefWidth="928.0">
          <children>
             <Label prefHeight="34.0" prefWidth="1091.0" text="Book Ticket" textAlignment="CENTER">
                <font>
                   <Font name="Fira Code Bold" size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
             </Label>
             <HBox prefHeight="102.0" prefWidth="1172.0">
                <children>
@@ -20,7 +23,7 @@
                      <children>
                         <HBox prefHeight="30.0" prefWidth="506.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="95.0" text="Title">
+                              <Label prefHeight="28.0" prefWidth="125.0" text="Title">
                                  <font>
                                     <Font name="System Bold Italic" size="15.0" />
                                  </font>
@@ -30,7 +33,7 @@
                         </HBox>
                         <HBox layoutX="18.0" layoutY="18.0" prefHeight="30.0" prefWidth="506.0">
                            <children>
-                              <Label prefHeight="28.0" prefWidth="95.0" text="Runtime">
+                              <Label prefHeight="28.0" prefWidth="125.0" text="Runtime">
                                  <font>
                                     <Font name="System Bold Italic" size="15.0" />
                                  </font>
@@ -43,10 +46,10 @@
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>
                   </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="102.0" prefWidth="574.0" >
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="102.0" prefWidth="574.0">
                       <HBox prefHeight="30.0" prefWidth="506.0">
                           <children>
-                              <Label prefHeight="28.0" prefWidth="95.0" text="Categories">
+                              <Label prefHeight="28.0" prefWidth="125.0" text="Categories">
                                   <font>
                                       <Font name="System Bold Italic" size="15.0" />
                                   </font>
@@ -56,7 +59,7 @@
                       </HBox>
                       <HBox layoutX="18.0" layoutY="18.0" prefHeight="30.0" prefWidth="506.0">
                           <children>
-                              <Label prefHeight="28.0" prefWidth="95.0" text="Age">
+                              <Label prefHeight="28.0" prefWidth="125.0" text="Age">
                                   <font>
                                       <Font name="System Bold Italic" size="15.0" />
                                   </font>
@@ -72,30 +75,29 @@
             </HBox>
          </children>
       </VBox>
-        <VBox layoutY="126.0" prefHeight="274.0" prefWidth="1198.0">
+        <VBox layoutY="126.0" prefHeight="274.0" prefWidth="945.0">
             <padding>
                 <Insets bottom="10.0" right="10.0" top="10.0" />
             </padding>
             <children>
-                <HBox prefHeight="53.0" prefWidth="590.0">
+                <HBox prefHeight="52.0" prefWidth="983.0">
                     <children>
-                        <ComboBox prefHeight="26.0" prefWidth="191.0" promptText="Musical Event" />
-                        <ComboBox layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Ticket Type">
+                        <ComboBox fx:id="cbTicketType" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Ticket Type">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </ComboBox>
-                        <ComboBox layoutX="221.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Venue">
+                        <ComboBox fx:id="cbVenue" layoutX="221.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Venue">
                             <HBox.margin>
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </ComboBox>
-                  <ComboBox layoutX="422.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Time Slot">
+                  <ComboBox fx:id="cbTimeSlot" layoutX="422.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Time Slot">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <ComboBox layoutX="623.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Seat Number">
+                  <ComboBox fx:id="cbSeatNumber" layoutX="623.0" layoutY="20.0" prefHeight="26.0" prefWidth="191.0" promptText="Seat Number">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -110,11 +112,14 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>
                 </HBox>
-            <TableView prefHeight="322.0" prefWidth="918.0">
+            <TableView prefHeight="203.0" prefWidth="1068.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
             </TableView>
             </children>
         </VBox>

@@ -77,6 +77,7 @@ public class MainController implements Initializable {
             BookTicket bookTicket = loader.getController();
             bookTicket.setVenues(venues);
             bookTicket.setMusical(musical);
+            bookTicket.setSchedules(schedules);
             Scene scene = new Scene(pane);
             Stage stage = new Stage();
             stage.setScene(scene);
