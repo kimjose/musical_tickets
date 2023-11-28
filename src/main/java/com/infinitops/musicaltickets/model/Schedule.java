@@ -44,4 +44,21 @@ public class Schedule {
     public void setMusical(Musical musical) {
         this.musical = musical;
     }
+
+    public String getTimeSlot(){
+        return this.date + " " + this.time;
+    }
+
+    public String getMusicalTitle(){
+        return this.musical.getTitle();
+    }
+
+    public String getVenueName(){
+        return this.venue.getName();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

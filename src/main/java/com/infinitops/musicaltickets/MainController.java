@@ -62,6 +62,25 @@ public class MainController implements Initializable {
             createNotification(0, "Select a musical first from the table.");
             return;
         }
+        List<Schedule> musicalSchedules = new ArrayList<>();
+        for (Schedule s: schedules) {
+            if (s.getMusical().equals(musical)) musicalSchedules.add(s);
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/infinitops/musicaltickets/show_schedules.fxml")));
+            AnchorPane pane = loader.load();
+            ShowSchedules showSchedules = loader.getController();
+            showSchedules.setSchedules(musicalSchedules.toArray(new Schedule[]{}));
+            Scene scene = new Scene(pane);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.setTitle("Musical Schedule");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
