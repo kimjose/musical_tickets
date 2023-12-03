@@ -4,29 +4,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="vBoxPane" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.MainController">
+<VBox fx:id="vBoxPane" alignment="CENTER" prefHeight="299.0" prefWidth="773.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.infinitops.musicaltickets.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <HBox prefHeight="39.0" prefWidth="400.0">
-        <Button onAction="#showMusicalList" text="Musical List" />
-        <Button onAction="#showSchedule" text="Show Schedule">
+        <Button onAction="#showMusicalList" text="꓿ Musical List" />
+        <Button onAction="#showSchedule" text="🗓️ Show Schedule">
             <HBox.margin>
                 <Insets left="10.0" />
             </HBox.margin>
         </Button>
-        <Button onAction="#bookTickets" text="Book Tickets">
+        <Button onAction="#bookTickets" text="🮱 Book Tickets">
             <HBox.margin>
                 <Insets left="20.0" />
             </HBox.margin>
         </Button>
-        <Button onAction="#exitApp" text="Exit">
+        <Button onAction="#exitApp" text="⏻ Exit">
             <HBox.margin>
                 <Insets left="10.0" />
             </HBox.margin>
         </Button>
     </HBox>
-   <TableView fx:id="myTableView" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+   <TableView fx:id="myTableView" prefHeight="380.0" prefWidth="200.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
      <columns>
        <TableColumn prefWidth="75.0" text="C1" />
        <TableColumn prefWidth="75.0" text="C2" />

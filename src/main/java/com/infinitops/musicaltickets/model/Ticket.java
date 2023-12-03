@@ -10,6 +10,7 @@ public class Ticket {
     private String seatNumber;
     private String venueName;
     private int venueId;
+    private String type;
     private String timeSlot;
     private double price;
     private BookTicket bookTicket;
@@ -72,6 +73,14 @@ public class Ticket {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Button getRemoveTicketButton(){

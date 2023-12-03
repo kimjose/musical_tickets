@@ -51,10 +51,10 @@ public class BookTicket  implements Initializable {
         this.musical = musical;
         labelMusicalTitle.setText(musical.getTitle());
         labelMusicalCategory.setText(musical.getCategory());
-        labelMusicalRuntime.setText(String.valueOf(musical.getRuntime()));
+        labelMusicalRuntime.setText(musical.getRuntimeString());
         labelMusicalMinAge.setText(String.valueOf(musical.getMinAge()));
 
-        String[] ticketTypes = new String[]{"Adult", "Senior"};
+        String[] ticketTypes = new String[]{"Adult", "Senior", "Student"};
         List<String> types = Arrays.asList(ticketTypes);
 //        if(musical.getMinAge() < 18) types.add("Student");
         Platform.runLater(() -> {
@@ -99,10 +99,11 @@ public class BookTicket  implements Initializable {
             tableTickets.prefWidthProperty().bind(apParent.widthProperty());
             tableTickets.getColumns().removeAll(tableTickets.getColumns());
             tableTickets.getColumns().addAll(createColumns(new MyTableColumn[]{
-                    new MyTableColumn("Musical ", "musicalName", 0.17),
-                    new MyTableColumn("Venue", "venueName", 0.17),
+                    new MyTableColumn("Musical ", "musicalName", 0.15),
+                    new MyTableColumn("Venue", "venueName", 0.14),
+                    new MyTableColumn("Ticket type", "type", 0.13),
                     new MyTableColumn("Time Slot", "timeSlot", 0.18),
-                    new MyTableColumn("Seat Number", "seatNumber", 0.16),
+                    new MyTableColumn("Seat Number", "seatNumber", 0.1),
                     new MyTableColumn("Price", "price", 0.10),
                     new MyTableColumn("Remove Ticket", "removeTicketButton", 0.18),
             }));
@@ -134,6 +135,7 @@ public class BookTicket  implements Initializable {
         Ticket t = new Ticket();
         t.setMusicalId(musical.get_id());
         t.setMusicalName(musical.getTitle());
+        t.setType(ticketType);
         t.setSeatNumber(seatNumber);
         t.setVenueId(v.get_id());
         t.setVenueName(v.getName());

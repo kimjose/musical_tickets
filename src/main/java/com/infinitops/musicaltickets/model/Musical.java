@@ -56,6 +56,11 @@ public class Musical {
         this.minAge = minAge;
     }
 
+    public String getRuntimeString(){
+        int hours = runtime / 60;
+        int minutes = runtime % 60;
+        return  hours + " hours " + minutes + " Minutes.";
+    }
     @Override
     public String toString() {
         return this.title;

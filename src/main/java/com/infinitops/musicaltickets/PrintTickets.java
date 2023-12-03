@@ -57,6 +57,8 @@ public class PrintTickets implements Initializable {
         ticketInfo += "\n";
         ticketInfo += "Venue: \t" + t.getVenueName();
         ticketInfo += "\n";
+        ticketInfo += "Type: \t" + t.getType();
+        ticketInfo += "\n";
         ticketInfo += "Timeslot: \t" + t.getTimeSlot();
         ticketInfo += "\n";
         ticketInfo += "Seat No: \t" + t.getSeatNumber();

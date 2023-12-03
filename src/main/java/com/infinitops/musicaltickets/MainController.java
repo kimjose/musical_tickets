@@ -124,7 +124,7 @@ public class MainController implements Initializable {
             myTableView.getColumns().addAll(createColumns(new MyTableColumn[]{
                     new MyTableColumn("Title", "title", 0.33),
                     new MyTableColumn("Min Age", "minAge", 0.33),
-                    new MyTableColumn("Categories", "category", 0.35),
+                    new MyTableColumn("Categories", "category", 0.30),
             }));
             Platform.runLater(() -> myTableView.setItems(FXCollections.observableArrayList(Arrays.asList(musicals))));
         });
