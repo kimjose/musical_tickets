@@ -5,12 +5,14 @@ public class Schedule {
     private String date;
     private String time;
     private Musical musical;
+    private double price;
 
-    public Schedule(Venue venue, String date, String time, Musical musical) {
+    public Schedule(Venue venue, String date, String time, Musical musical, double price) {
         this.venue = venue;
         this.date = date;
         this.time = time;
         this.musical = musical;
+        this.price = price;
     }
 
     public Venue getVenue() {
@@ -57,8 +59,16 @@ public class Schedule {
         return this.venue.getName();
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
-        return super.toString();
+        return getDate()+ " " + getTime();
     }
 }

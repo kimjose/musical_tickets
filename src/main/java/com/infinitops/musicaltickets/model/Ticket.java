@@ -11,6 +11,7 @@ public class Ticket {
     private String venueName;
     private int venueId;
     private String timeSlot;
+    private double price;
     private BookTicket bookTicket;
 
     public void setBookTicket(BookTicket bookTicket) {
@@ -65,7 +66,13 @@ public class Ticket {
         this.timeSlot = timeSlot;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Button getRemoveTicketButton(){
         Button btnRemoveTicket = new Button();

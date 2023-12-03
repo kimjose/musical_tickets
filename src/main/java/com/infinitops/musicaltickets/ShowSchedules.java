@@ -45,9 +45,10 @@ public class ShowSchedules implements Initializable {
         tableSchedules.getColumns().removeAll(tableSchedules.getColumns());
         Platform.runLater(() -> {
             tableSchedules.getColumns().addAll(createColumns(new MyTableColumn[]{
-                    new MyTableColumn("Musical", "musicalTitle", 0.35),
-                    new MyTableColumn("Venue", "venueName", 0.33),
-                    new MyTableColumn("Time Slot", "timeSlot", 0.33),
+                    new MyTableColumn("Musical", "musicalTitle", 0.25),
+                    new MyTableColumn("Venue", "venueName", 0.24),
+                    new MyTableColumn("Time Slot", "timeSlot", 0.24),
+                    new MyTableColumn("Price", "price", 0.23),
             }));
             tableSchedules.setItems(FXCollections.observableList(Arrays.asList(schedules)));
         });

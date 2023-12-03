@@ -38,11 +38,11 @@ public class MainController implements Initializable {
             new Musical(2, "Frozen", 145, "Disney Shows, Family and Kids, Weekday Matinees", 6),
     };
     private Schedule[] schedules = new Schedule[]{
-            new Schedule(venues[0], "2023-11-30", "18:00", musicals[0]),
-            new Schedule(venues[0], "2023-12-02", "18:00", musicals[0]),
-            new Schedule(venues[0], "2023-11-29", "14:00", musicals[1]),
-            new Schedule(venues[1], "2023-12-01", "17:00", musicals[0]),
-            new Schedule(venues[1], "2023-11-30", "18:00", musicals[1])
+            new Schedule(venues[0], "2023-11-30", "18:00", musicals[0], 15),
+            new Schedule(venues[0], "2023-12-02", "18:00", musicals[0], 11),
+            new Schedule(venues[0], "2023-11-29", "14:00", musicals[1], 10.5),
+            new Schedule(venues[1], "2023-12-01", "17:00", musicals[0], 11),
+            new Schedule(venues[1], "2023-11-30", "18:00", musicals[1], 12)
     };
 
     @FXML

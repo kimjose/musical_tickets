@@ -5,13 +5,11 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -28,10 +26,12 @@ public class BookTicket  implements Initializable {
     public Venue[] venues;
     public ComboBox<String> cbTicketType;
     public ComboBox<Venue> cbVenue;
-    public ComboBox<String> cbTimeSlot;
+    public ComboBox<Schedule> cbTimeSlot;
     public ComboBox<String> cbSeatNumber;
     public AnchorPane apParent;
     public TableView<Ticket> tableTickets;
+    public Button btnPrintTickets;
+    public Label labelTotal;
 
     @FXML
     private Label labelMusicalTitle;
@@ -45,6 +45,7 @@ public class BookTicket  implements Initializable {
     private Musical musical;
     private Schedule[] schedules;
     List<Ticket> tickets = new ArrayList<>();
+
     public void setMusical(Musical musical){
         this.musical = musical;
         labelMusicalTitle.setText(musical.getTitle());
@@ -84,26 +85,27 @@ public class BookTicket  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         cbVenue.valueProperty().addListener((observableValue, venue, t1) -> {
-            List<String> times = new ArrayList<>();
+            List<Schedule> scheduleList = new ArrayList<>();
             assert schedules != null;
             for (Schedule s: schedules) {
-                if(s.getVenue().equals(t1)) times.add(s.getDate()+ " " + s.getTime());
+                if(s.getVenue().equals(t1)) scheduleList.add(s);
             }
-            cbTimeSlot.setItems(FXCollections.observableList(times));
+            cbTimeSlot.setItems(FXCollections.observableList(scheduleList));
             if(t1 != null) cbSeatNumber.setItems(FXCollections.observableList(Arrays.asList(t1.getSeats())));
         });
         Platform.runLater(() -> {
             tableTickets.prefWidthProperty().bind(apParent.widthProperty());
             tableTickets.getColumns().removeAll(tableTickets.getColumns());
             tableTickets.getColumns().addAll(createColumns(new MyTableColumn[]{
-                    new MyTableColumn("Musical ", "musicalName", 0.20),
-                    new MyTableColumn("Venue", "venueName", 0.20),
-                    new MyTableColumn("Time Slot", "timeSlot", 0.20),
-                    new MyTableColumn("Seat Number", "seatNumber", 0.18),
+                    new MyTableColumn("Musical ", "musicalName", 0.17),
+                    new MyTableColumn("Venue", "venueName", 0.17),
+                    new MyTableColumn("Time Slot", "timeSlot", 0.18),
+                    new MyTableColumn("Seat Number", "seatNumber", 0.16),
+                    new MyTableColumn("Price", "price", 0.10),
                     new MyTableColumn("Remove Ticket", "removeTicketButton", 0.18),
             }));
+            btnPrintTickets.setDisable(true);
         });
     }
 
@@ -118,8 +120,8 @@ public class BookTicket  implements Initializable {
             createNotification(4, "Select Ticket type first");
             return;
         }
-        String timeSlot = cbTimeSlot.getValue();
-        if (timeSlot == null){
+        Schedule schedule = cbTimeSlot.getValue();
+        if (schedule == null){
             createNotification(4, "Select time slot first");
             return;
         }
@@ -134,11 +136,13 @@ public class BookTicket  implements Initializable {
         t.setSeatNumber(seatNumber);
         t.setVenueId(v.get_id());
         t.setVenueName(v.getName());
-        t.setTimeSlot(timeSlot);
+        t.setTimeSlot(schedule.toString());
+        t.setPrice(schedule.getPrice());
         t.setBookTicket(this);
         tickets.add(t);
 
         tableTickets.setItems(FXCollections.observableList(tickets));
+        updateCost();
         cbVenue.getSelectionModel().clearSelection();
         cbTicketType.getSelectionModel().clearSelection();
         cbTimeSlot.getSelectionModel().clearSelection();
@@ -148,6 +152,17 @@ public class BookTicket  implements Initializable {
     public void removeTicket(Ticket t){
         tickets.remove(t);
         tableTickets.setItems(FXCollections.observableList(tickets));
+        updateCost();
+    }
+
+    private void updateCost(){
+        double cost = 0;
+        for (Ticket t: tickets) {
+            cost = cost + t.getPrice();
+        }
+        labelTotal.setText(Double.toString(cost));
+        if(cost == 0) btnPrintTickets.setDisable(true);
+        else btnPrintTickets.setDisable(false);
     }
 
     private void createNotification(int type, String message) {
@@ -186,4 +201,6 @@ public class BookTicket  implements Initializable {
         return tableColumnList.toArray(tableColumns);
     }
 
+    public void printTickets(ActionEvent actionEvent) {
+    }
 }
