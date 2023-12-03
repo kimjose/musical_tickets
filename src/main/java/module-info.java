@@ -6,6 +6,9 @@ module com.infinitops.musicaltickets {
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
+    requires java.desktop;
+    requires org.apache.pdfbox;
 
     opens com.infinitops.musicaltickets to javafx.fxml;
     opens com.infinitops.musicaltickets.model to javafx.fxml;
