@@ -132,6 +132,14 @@ public class BookTicket  implements Initializable {
             createNotification(4, "Select seat number");
             return;
         }
+        boolean seatBooked = false;
+        for(Ticket t: tickets){
+            if(t.getSeatNumber() == seatNumber && schedule.toString().equals(t.getTimeSlot())) seatBooked = true;
+        }
+        if (seatBooked){
+            createNotification(-1, "This seat has already been booked");
+            return;
+        }
         Ticket t = new Ticket();
         t.setMusicalId(musical.get_id());
         t.setMusicalName(musical.getTitle());
