@@ -5,11 +5,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.rendering.PDFRenderer;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,7 +31,7 @@ public class PrintTickets implements Initializable {
         for (Ticket t : tickets) {
 //            Document d = new Document();
             try {
-                String fname = "ticket_" + i +".txt";
+                String fname = "temp/ticket_" + i +".txt";
                 File f = new File(fname);
                 String ticketInfo = getTicketInfo(t);
                 FileWriter writer = new FileWriter(fname);
@@ -36,6 +39,43 @@ public class PrintTickets implements Initializable {
                 writer.write("\n");
                 writer.write(ticketInfo);
                 writer.close();
+
+                PDDocument pdDocument = new PDDocument();
+                PDPage page = new PDPage(PDRectangle.A4);
+                pdDocument.addPage(page);
+                PDPageContentStream contentStream = new PDPageContentStream(pdDocument, page);
+
+                // Set font and other properties
+                contentStream.setFont(PDType1Font.COURIER, 10);
+                contentStream.setLeading(15f);
+                contentStream.beginText();
+                contentStream.newLineAtOffset(100, 700);
+
+                // Add text to the page
+                contentStream.showText("Musical:   " + t.getMusicalName());
+                contentStream.newLine();
+                contentStream.showText("Venue:     " + t.getVenueName());
+                contentStream.newLine();
+                contentStream.showText("Type:      " + t.getType());
+                contentStream.newLine();
+                contentStream.showText("Time Slot: " + t.getTimeSlot());
+                contentStream.newLine();
+                contentStream.showText("Seat No:   " + t.getSeatNumber());
+                contentStream.newLine();
+                contentStream.showText("Amount:    " + t.getPrice());
+                contentStream.newLine();
+
+
+                // End the text and content stream
+                contentStream.endText();
+                contentStream.close();
+
+                // Save the document to a file
+                pdDocument.save("temp/ticket_" + i +".pdf");
+
+                // Close the document
+                pdDocument.close();
+
 
 //                UI
                 TextArea ta = new TextArea();
