@@ -1,5 +1,6 @@
 package com.infinitops.musicaltickets;
 
+import com.infinitops.musicaltickets.daos.MyDao;
 import com.infinitops.musicaltickets.model.Musical;
 import com.infinitops.musicaltickets.model.MyTableColumn;
 import com.infinitops.musicaltickets.model.Schedule;
@@ -116,6 +117,11 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        MyDao myDao = new MyDao();
+        musicals = myDao.getMusicals().toArray(new Musical[0]);
+        schedules = myDao.getSchedules().toArray(new Schedule[0]);
+        venues = myDao.getVenues().toArray(new Venue[0]);
 
         myTableView.prefWidthProperty().bind(vBoxPane.widthProperty());
         if(myTableView == null) System.out.println("Table is null");

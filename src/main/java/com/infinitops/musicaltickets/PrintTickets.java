@@ -1,5 +1,6 @@
 package com.infinitops.musicaltickets;
 
+import com.infinitops.musicaltickets.daos.MyDao;
 import com.infinitops.musicaltickets.model.Ticket;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
@@ -20,9 +21,10 @@ public class PrintTickets implements Initializable {
 
     public GridPane gpTickets;
     private Ticket[] tickets;
+    private MyDao myDao;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        myDao = new MyDao();
     }
 
     public void setTickets(Ticket[] tickets) {
@@ -86,8 +88,10 @@ public class PrintTickets implements Initializable {
                     gpTickets.add(ta, 1, (i-1)/2);
                 }
                 i++;
-            } catch (Exception e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
     }
