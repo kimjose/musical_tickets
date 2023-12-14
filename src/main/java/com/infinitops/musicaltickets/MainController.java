@@ -39,11 +39,11 @@ public class MainController implements Initializable {
             new Musical(2, "Frozen", 145, "Disney Shows, Family and Kids, Weekday Matinees", 6),
     };
     private Schedule[] schedules = new Schedule[]{
-            new Schedule(venues[0], "2023-11-30", "18:00", musicals[0], 15),
-            new Schedule(venues[0], "2023-12-02", "18:00", musicals[0], 11),
-            new Schedule(venues[0], "2023-11-29", "14:00", musicals[1], 10.5),
-            new Schedule(venues[1], "2023-12-01", "17:00", musicals[0], 11),
-            new Schedule(venues[1], "2023-11-30", "18:00", musicals[1], 12)
+            new Schedule(1, venues[0], "2023-11-30", "18:00", musicals[0], 15),
+            new Schedule(2, venues[0], "2023-12-02", "18:00", musicals[0], 11),
+            new Schedule(3, venues[0], "2023-11-29", "14:00", musicals[1], 10.5),
+            new Schedule(4, venues[1], "2023-12-01", "17:00", musicals[0], 11),
+            new Schedule(5, venues[1], "2023-11-30", "18:00", musicals[1], 12)
     };
 
     @FXML
@@ -65,7 +65,7 @@ public class MainController implements Initializable {
         }
         List<Schedule> musicalSchedules = new ArrayList<>();
         for (Schedule s: schedules) {
-            if (s.getMusical().equals(musical)) musicalSchedules.add(s);
+            if (s.getMusical().get_id()== musical.get_id()) musicalSchedules.add(s);
         }
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/infinitops/musicaltickets/show_schedules.fxml")));
@@ -122,6 +122,7 @@ public class MainController implements Initializable {
         musicals = myDao.getMusicals().toArray(new Musical[0]);
         schedules = myDao.getSchedules().toArray(new Schedule[0]);
         venues = myDao.getVenues().toArray(new Venue[0]);
+        System.out.println("Schedules are..... " + schedules.length);
 
         myTableView.prefWidthProperty().bind(vBoxPane.widthProperty());
         if(myTableView == null) System.out.println("Table is null");

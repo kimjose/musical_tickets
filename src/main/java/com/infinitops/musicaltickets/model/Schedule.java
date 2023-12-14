@@ -1,13 +1,15 @@
 package com.infinitops.musicaltickets.model;
 
 public class Schedule {
+    private int id;
     private Venue venue;
     private String date;
     private String time;
     private Musical musical;
     private double price;
 
-    public Schedule(Venue venue, String date, String time, Musical musical, double price) {
+    public Schedule(int id, Venue venue, String date, String time, Musical musical, double price) {
+        this.id = id;
         this.venue = venue;
         this.date = date;
         this.time = time;

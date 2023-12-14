@@ -26,9 +26,8 @@ public class MyDao {
             String query = "SELECT * FROM musicals";
             preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
-            int _id = 0;
             while (rs.next()){
-                Musical musical = new Musical(_id, rs.getString(1), rs.getInt(3), rs.getString(2), rs.getInt(4));
+                Musical musical = new Musical(rs.getInt("id"), rs.getString("title"), rs.getInt("runtime"), rs.getString("category"), rs.getInt("minage"));
                 musicalList.add(musical);
             }
         } catch(NullPointerException e){
@@ -46,8 +45,8 @@ public class MyDao {
             ResultSet rs = preparedStatement.executeQuery();
             int _id = 0;
             while (rs.next()){
-                String seats = rs.getString(2);
-                Venue v = new Venue(rs.getInt(0), rs.getString(1), seats.split(","));
+                String seats = rs.getString("seats");
+                Venue v = new Venue(rs.getInt("id"), rs.getString("name"), seats.split(","));
                 venueList.add(v);
             }
         } catch(Exception e){
@@ -65,12 +64,12 @@ public class MyDao {
             preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
-                int venueId = rs.getInt(3);
-                int musicalId = rs.getInt(2);
-                String dateTime = rs.getString(1);
+                int venueId = rs.getInt("venue_id");
+                int musicalId = rs.getInt("musical_id");
+                String dateTime = rs.getString("date_time");
                 String[] dateTimeArray = dateTime.split(" ");
-                double price = rs.getDouble(4);
-                int id  = rs.getInt(0);
+                double price = rs.getDouble("price");
+                int id  = rs.getInt("id");
                 Venue venue = null;
                 for (Venue v: venueList) {
                     if(v.get_id() == venueId){
@@ -85,7 +84,7 @@ public class MyDao {
                         break;
                     }
                 }
-                Schedule s = new Schedule(venue, dateTimeArray[0], dateTimeArray[1], musical, price);
+                Schedule s = new Schedule(id, venue, dateTimeArray[0], dateTimeArray[1], musical, price);
                 scheduleList.add(s);
             }
         } catch(NullPointerException e){
@@ -122,12 +121,13 @@ public class MyDao {
 
     public boolean insertTicket(Ticket t){
         try {
-            preparedStatement = connection.prepareStatement("insert into tickets values(?,?,?,?,?.?)");
-            preparedStatement.setInt(0, t.getMusicalId());
-            preparedStatement.setInt(1, t.getVenueId());
-            preparedStatement.setString(2, t.getType());
-            preparedStatement.setString(3, t.getSeatNumber());
-            preparedStatement.setDouble(4, t.getPrice());
+            preparedStatement = connection.prepareStatement("insert into tickets(musical_id, venue_id, type, seat_number, time_slot, price) values(?,?,?,?,?,?)");
+            preparedStatement.setInt(1, t.getMusicalId());
+            preparedStatement.setInt(2, t.getVenueId());
+            preparedStatement.setString(3, t.getType());
+            preparedStatement.setString(4, t.getSeatNumber());
+            preparedStatement.setString(5, t.getTimeSlot());
+            preparedStatement.setDouble(6, t.getPrice());
             return preparedStatement.execute();
         }  catch (SQLException e) {
             e.printStackTrace();

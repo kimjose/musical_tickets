@@ -33,6 +33,8 @@ public class PrintTickets implements Initializable {
         for (Ticket t : tickets) {
 //            Document d = new Document();
             try {
+                myDao.insertTicket(t);
+
                 String fname = "temp/ticket_" + i +".txt";
                 File f = new File(fname);
                 String ticketInfo = getTicketInfo(t);

@@ -90,7 +90,10 @@ public class BookTicket  implements Initializable {
             List<Schedule> scheduleList = new ArrayList<>();
             assert schedules != null;
             for (Schedule s: schedules) {
-                if(s.getVenue().equals(t1)) scheduleList.add(s);
+                assert s != null;
+                assert t1 != null;
+                System.out.println(t1);
+                if(s.getVenue().get_id() == t1.get_id()) scheduleList.add(s);
             }
             cbTimeSlot.setItems(FXCollections.observableList(scheduleList));
             if(t1 != null) cbSeatNumber.setItems(FXCollections.observableList(Arrays.asList(t1.getSeats())));
